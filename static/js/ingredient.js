@@ -10,6 +10,23 @@ $(document).ready(function () {
   showCards();
 });
 
+$(document).on('click', '.test', function() {
+  let target = $(this).next().children('h3').text()
+  console.log(target)
+  $.ajax({
+    type: "POST",
+    url: "/newItem",
+    data: {
+      "target": target
+    },
+    success: function (response) { // 성공하면
+      // alert(response["msg"]);
+      window.location.reload()
+    }
+  })
+})
+
+
 function addButton() {
   let food_name = $('#foodName').val();
   console.log(food_name)
@@ -25,6 +42,8 @@ function addButton() {
     }
   })
 }
+
+
 
 function showCards() {
   $.ajax({
@@ -43,11 +62,11 @@ function showCards() {
         let info3 = foodInfo[i]['단백질(g)'];
         let info4 = foodInfo[i]['지방(g)'];
 
-        let temp_html = `<div class="card" id="card">
-                            <button type="button" class="btn-close btn-close-black btn-close-card" aria-label="Close"></button>
+        let temp_html = `<div class="card">
+                            <button type="button" class="test btn-close btn-close-black btn-close-card" aria-label="Close"></button>
                             <div class="food-info-text">
                                 <!-- 음식이름 -->
-                                <h3 class="card-title" id="title_name">${name}</h3>
+                                <h3 class="card-title">${name}</h3>
 
                                 <!-- 음식정보 -->
                                 <div class="food-info">

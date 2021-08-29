@@ -89,9 +89,10 @@ def add_item():
     if request.method == 'POST':
 
         food_name = request.form.get('food_name')
+        target = request.form.get('target')
         print("food_name is", food_name)
-
-        food_find = db.NutientsDB.find_one({'음식명': food_name}, {'_id': False})
+        print("target name is", target)
+        food_find = db.NutrientsDB.find_one({'음식명': food_name}, {'_id': False})
         print("food_find is", food_find)
 
         if food_find is not None:
@@ -99,15 +100,19 @@ def add_item():
             db.userItem.insert_one(food_find)
             return render_template('ingredient.html')
 
-        elif food_find is None:
+        elif food_find is None and target is None:
             flash('찾는 재료가 없어요! ㅠ_ㅠ')
             return render_template('ingredient.html')
 
-    if request.method == 'GET':
+        elif target is not None:
+            food_find = db.userItem.delete_one({'음식명' : target})
+            return render_template('ingredient.html')
+
+    elif request.method == 'GET':
         food_find_list = list(db.userItem.find({}, {'_id': False}))
         print("food_find_list is", food_find_list)
         return jsonify({'all_food': food_find_list})
-
+    
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
