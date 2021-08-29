@@ -10,7 +10,7 @@ $(document).ready(function () {
   showCards();
 });
 
-$(document).on('click', '.test', function() {
+$(document).on('click', '.test', function () {
   let target = $(this).next().children('h3').text()
   console.log(target)
   $.ajax({
@@ -61,6 +61,9 @@ function showCards() {
         let info2 = foodInfo[i]['탄수화물(g)'];
         let info3 = foodInfo[i]['단백질(g)'];
         let info4 = foodInfo[i]['지방(g)'];
+        let info5 = foodInfo[i]['콜레스트롤(g)'];
+        let info6 = foodInfo[i]['식이섬유(g)'];
+        let info7 = foodInfo[i]['나트륨(g)'];
 
         let temp_html = `<div class="card">
                             <button type="button" class="test btn-close btn-close-black btn-close-card" aria-label="Close"></button>
@@ -75,14 +78,14 @@ function showCards() {
                                     <div class="nutrient2">탄수화물 : ${info2}g</div>
                                     <div class="nutrient3">단백질 : ${info3}g</div>
                                     <div class="nutrient4">지방 : ${info4}g</div>
-                                    <div class="nutrient5">콜레스테롤 : 0mg</div>
-                                    <div class="nutrient6">식이섬유 : 153g</div>
-                                    <div class="nutrient7">나트륨 : 231g</div>
+                                    <div class="nutrient5">콜레스테롤 : ${info5}mg</div>
+                                    <div class="nutrient6">식이섬유 : ${info6}g</div>
+                                    <div class="nutrient7">나트륨 : ${info7}g</div>
                                 </div>
                             </div>
 
                               <!-- 레시피 정보 버튼 -->
-                              <button type="button" class="btn-style" data-bs-toggle="modal" data-bs-target="#exampleModal">RECIPE
+                              <button type="button" class="btn-style" data-bs-toggle="modal" data-bs-target="#exampleModal"">RECIPE SEARCH
                               </button>
                           </div>`
         $('.card-wrap').append(temp_html)

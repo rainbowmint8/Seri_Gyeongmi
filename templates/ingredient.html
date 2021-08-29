@@ -9,12 +9,14 @@
 
 <head>
   <!-- Required meta tags -->
-  <?xml version="1.0" encoding="UTF-8" standalone="true"?>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta property="og:title" content="냉장고 파먹기" />
+  <meta property="og:description" content="나의 냉장고 재료를 파먹어보자!" />
+  <meta property="og:image" content="{{ url_for('static', filename='ogimage.png') }}" />
 
   <!-- favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="/static/img/refrigerator.ico" />
+  <link rel="shortcut icon" href="/static/img/favicon.ico">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -57,48 +59,17 @@
         ">
       <div class="modal-content">
         <div class="modal-header">
-          <span class="badge bg-light text-dark badge-font">🍴 상세정보 🍴</span>
-          <h5 class="modal-title" id="recipe-name">보리고구마 밥</h5>
+          <h5 class="modal-title" id="recipe-name">레시피 검색</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="food-img-ckry">
-            <img class="ckry_Image_Address" src="/static/img/index_background.jpg" alt="" />
-          </div>
-          <!-- 조합재료 -->
-          <div class="combination">
-            <div class="combi-title">
-              <h5><i class="fas fa-clipboard-list"></i> 식재료</h5>
-            </div>
-            <div class="combi-ingredient">
-              <div class="combi">보라&nbsp; &nbsp;</div>
-              <div class="combi">쌀보리&nbsp; &nbsp;</div>
-              <div class="combi">도정&nbsp; &nbsp;</div>
-              <div class="combi">생것&nbsp; &nbsp;</div>
-              <div class="combi">고구마, 찐것&nbsp; &nbsp;</div>
-              <div class="combi">곡류 및 그 제품&nbsp; &nbsp;</div>
-            </div>
-          </div>
-
-          <!-- 기타 추천 레시피 -->
-          <div class="order-recipe">
-            <div class="recipe-order">
-              <div class="recipe-order-title">
-                <span class="badge bg-warning text-dark etc-badge-margin">🔊 조리순서</span>
-              </div>
-              <!-- 이부분 css 줘야함 -->
-              <div class="recipe-oders-wrap">
-                <div class="orders">
-                  1. 보리를 씻어 1시간 이상 물에 불린 다음 삶기
-                </div>
-                <div class="orders">2. 고구마는 껍질을 벗겨 굵게 썰기</div>
-                <div class="orders">
-                  3. 밥솥에 삶은 보리, 쌀을 넣고 고루 섞은 다음 고구마를 얹어
-                  밥 짓기
-                </div>
-              </div>
-            </div>
-          </div>
+          <h3 class="naver">네이버</h3>
+          <iframe class="shareFrm" width="100%" height="500"
+            src="https://terms.naver.com/list.naver?cid=48156&categoryId=48156" frameborder="0" scrolling="yes"
+            marginheight="0" marginwidth="0"></iframe>
+          <h3 class="allrecipes">all recipes</h3>
+          <iframe class="shareFrm" width="100%" height="500" src="https://www.allrecipes.com/" frameborder="0"
+            scrolling="yes" marginheight="0" marginwidth="0"></iframe>
         </div>
       </div>
     </div>
@@ -114,8 +85,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" href="/ingredient">뭐먹을래?</a>
-          <a class="nav-link" href="/mart">재료가 없다면?</a>
+          <a class="nav-link" href="/ingredient">마이냉장고</a>
+          <a class="nav-link" href="/mart">마트위치</a>
           <a class="nav-link" href="/" onclick="alert('나중에 또 봐요! 회원님! *^^*')">로그아웃</a>
         </div>
       </div>
@@ -159,7 +130,7 @@
       <form class="food-add-btn" method="POST" action="/newItem">
         <input type="text" name="food_name" class="food-add-bar" id="foodName" placeholder="재료 이름" />
         <button type="button" class="btn btn-outline-secondary add-btn" onclick="addButton()">
-          재료 검색
+          재료 추가
         </button>
       </form>
     </div>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, jsonify, session, flash
+from flask import Flask, render_template, request, jsonify, flash
 from pymongo import MongoClient
 
 client = MongoClient('localhost', 27017)
@@ -81,9 +81,6 @@ def new_member():
 
 
 # 재료추가
-# food_name = ''
-
-
 @app.route('/newItem', methods=['GET', 'POST'])
 def add_item():
     if request.method == 'POST':
@@ -99,15 +96,12 @@ def add_item():
             flash('완료!')
             db.userItem.insert_one(food_find)
             return render_template('ingredient.html')
-
         elif food_find is None and target is None:
             flash('찾는 재료가 없어요! ㅠ_ㅠ')
             return render_template('ingredient.html')
-
         elif target is not None:
             food_find = db.userItem.delete_one({'음식명' : target})
             return render_template('ingredient.html')
-
     elif request.method == 'GET':
         food_find_list = list(db.userItem.find({}, {'_id': False}))
         print("food_find_list is", food_find_list)

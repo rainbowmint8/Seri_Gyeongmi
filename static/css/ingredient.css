@@ -35,8 +35,8 @@
 
 /* 하단정보 + 사진 */
 .card {
-  width: 350px;
-  height: 360px;
+  width: 340px;
+  height: 340px;
   margin: 20px 10px;
   border-radius: 25px;
   box-shadow: 5px 5px 5px #e0e0e0;
@@ -47,14 +47,14 @@
 .btn-close-card {
   position: absolute;
   left: 88%;
-  top: 2%;
+  top: 5%;
 }
 
 
 /* 카드 정보 */
 .food-info-text {
   height: 90%;
-  padding: 20px 20px 0px 20px;
+  padding: 20px 20px 10px 20px;
 }
 
 .food-info {
@@ -133,4 +133,13 @@
   margin: 40px;
   border-radius: 25px;
   outline: none;
+}
+
+/* 레시피 프레임 */
+.shareFrm {
+  padding: 10px 10px;
+}
+
+.naver , .allrecipes {
+  font-family: 'Jua', sans-serif;
 }
