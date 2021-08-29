@@ -1,0 +1,218 @@
+{% with messages = get_flashed_messages() %} {% if messages %}
+<script>
+  alert("{{messages[-1]}}");
+</script>
+{% endif %} {% endwith %}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <!-- Jq -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- favicon -->
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/static/img/refrigerator.ico"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+
+    <!-- css -->
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/common.css" />
+    <link rel="stylesheet" href="/static/css/index_neon_btn.css" />
+
+    <title>냉장고 파먹기</title>
+
+    <!-- google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jua&family=Monoton&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- font awesomes CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <!-- loading -->
+    <main class="page-content" id="loading">
+      <svg
+        class="infinity"
+        version="1.1"
+        x="0px"
+        y="0px"
+        viewBox="0 0 187.3 93.7"
+        preserveAspectRatio="xMidyMid"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+      >
+        <path
+          class="infinity__outline"
+          d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1 c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z"
+        />
+        <path
+          class="infinity__tracer infinity__tracer--1"
+          d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1 c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z"
+        />
+        <path
+          class="infinity__tracer infinity__tracer--2"
+          d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1 c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z"
+        />
+        <path
+          class="infinity__tracer infinity__tracer--3"
+          d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1 c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z"
+        />
+        <path
+          class="infinity__tracer infinity__tracer--4"
+          d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1 c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z"
+        />
+        <path
+          class="infinity__tracer infinity__tracer--5"
+          d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1 c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z"
+        />
+        <path
+          class="infinity__tracer infinity__tracer--6"
+          d="M93.9,46.4c9.3,9.5,13.8,17.9,23.5,17.9s17.5-7.8,17.5-17.5s-7.8-17.6-17.5-17.5c-9.7,0.1-13.3,7.2-22.1,17.1 c-8.9,8.8-15.7,17.9-25.4,17.9s-17.5-7.8-17.5-17.5s7.8-17.5,17.5-17.5S86.2,38.6,93.9,46.4z"
+        />
+      </svg>
+    </main>
+
+    <!-- 메뉴바 -->
+    <header class="navbar navbar-expand-lg navbar-light bg-light menu-bar">
+      <div class="container-fluid">
+        <a class="navbar-brand head-nav-text" href="/join_index"
+          >냉장고 파먹기</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="/ingredient">마이냉장고</a>
+            <a class="nav-link" href="/mart">마트위치</a>
+            <a
+              class="nav-link"
+              href="/"
+              onclick="alert('나중에 또 봐요! 회원님! *^^*')"
+              >로그아웃</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- background -->
+    <section id="close" class="first-background">
+      <img
+        class="refrigerator"
+        src="/static/img/refrigerator_close.svg"
+        alt="냉장고"
+      />
+    </section>
+
+    <!-- neon -->
+    <div class="open"><a onclick="ref_open()" href="#">OPEN</a></div>
+
+    <!-- cosmo background -->
+    <section id="open" class="cosomo-background">
+      <img
+        class="refrigerator2"
+        src="/static/img/refrigerator_open.svg"
+        alt="냉장고"
+      />
+      <img
+        src="/static/img/파.png"
+        alt=""
+        class="layer comet"
+        data-speed="-7"
+      />
+      <img
+        src="/static/img/가지.png"
+        alt=""
+        class="layer fourP"
+        data-speed="3"
+      />
+      <img
+        src="/static/img/치즈.png"
+        alt=""
+        class="layer fiveP"
+        data-speed="8"
+      />
+      <img
+        src="/static/img/콩나물.png"
+        alt=""
+        class="layer sixP"
+        data-speed="10"
+      />
+      <img
+        src="/static/img/고기.png"
+        alt=""
+        class="layer eightP"
+        data-speed="-3"
+      />
+      <img
+        src="/static/img/새우.png"
+        alt=""
+        class="layer sun"
+        data-speed="-4"
+      />
+    </section>
+
+    <!-- 홈화면 재료 추가 버튼 -->
+    <div class="add-btn-xy">
+      <a class="add-btn" id="add-btn-index" href="/ingredient">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        냉장고 비우기
+      </a>
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>
+
+    <!-- swiper -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- js -->
+    <script src="/static/js/index.js"></script>
+  </body>
+</html>

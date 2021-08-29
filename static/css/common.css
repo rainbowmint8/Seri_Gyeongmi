@@ -1,0 +1,35 @@
+/* 전체(공통) 적용 */
+* {
+  cursor: url('/static/img/cursor.cur'), auto;
+}
+
+/* 상단 메뉴바 */
+.menu-bar {
+  font-family: 'Jua', sans-serif;
+}
+
+/* 모달창 */
+.modal-body {
+  background-color: rgba(233, 213, 127, 0.966);
+}
+
+.modal-header {
+  background-color: rgb(173, 245, 221);
+}
+
+.modal-footer {
+  background-color: rgb(252, 156, 156);
+}
+
+.modal-title {
+  font-family: 'Jua', cursive;
+}
+
+label {
+  color: #9c9c9c;
+  font-family: 'Jua', cursive;
+}
+
+.btn-style {
+  font-family: 'Jua', cursive;
+}

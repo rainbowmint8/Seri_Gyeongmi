@@ -1,0 +1,382 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: fit-content;
+}
+
+/* 로딩 */
+.page-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  transition: background-color 200ms;
+}
+
+.label {
+  position: absolute;
+  left: 1rem;
+  padding: 8px 0 0 60px;
+  font-family: "Helvetica", sans-serif;
+  font-size: 0.85rem;
+  color: #636775;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: color 200ms;
+}
+
+.label.theme-toggle__label {
+  top: 1rem;
+}
+
+.label.outline-toggle__label {
+  top: 3.5rem;
+}
+
+.label:before,
+.label:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 28px;
+  background-color: #fafafa;
+  border: 1px solid #d9d9d9;
+  border-radius: 360px;
+  transition: background-color 200ms, transform 200ms;
+}
+
+.label:after {
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 4px;
+}
+
+.infinity {
+  position: absolute;
+  width: 100%;
+  max-width: 800px;
+}
+
+.infinity path {
+  fill: none;
+  stroke-width: 10;
+  transform-origin: 50% 50%;
+}
+
+.infinity__outline {
+  stroke: #f2f2f2;
+  -webkit-animation: hover 4000ms linear infinite;
+  animation: hover 4000ms linear infinite;
+  transition: opacity 600ms;
+}
+
+.infinity__tracer {
+  stroke-linecap: round;
+  opacity: 0.8;
+  animation: tracer 1000ms linear reverse infinite;
+}
+
+.infinity__tracer--1 {
+  stroke: #f38181;
+  -webkit-animation-duration: 6000ms;
+  animation-duration: 6000ms;
+  -webkit-animation-delay: -3960ms;
+  animation-delay: -3960ms;
+}
+
+.infinity__tracer--2 {
+  stroke: #fce38a;
+  -webkit-animation-duration: 3000ms;
+  animation-duration: 3000ms;
+  -webkit-animation-delay: -1980ms;
+  animation-delay: -1980ms;
+}
+
+.infinity__tracer--3 {
+  stroke: #e23e57;
+  -webkit-animation-duration: 2000ms;
+  animation-duration: 2000ms;
+  -webkit-animation-delay: -1320ms;
+  animation-delay: -1320ms;
+}
+
+.infinity__tracer--4 {
+  stroke: #95e1d3;
+  -webkit-animation-duration: 1500ms;
+  animation-duration: 1500ms;
+  -webkit-animation-delay: -990ms;
+  animation-delay: -990ms;
+}
+
+.infinity__tracer--5 {
+  stroke: #ffc4d0;
+  -webkit-animation-duration: 1200ms;
+  animation-duration: 1200ms;
+  -webkit-animation-delay: -792ms;
+  animation-delay: -792ms;
+}
+
+.infinity__tracer--6 {
+  stroke: #00dffc;
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  -webkit-animation-delay: -660ms;
+  animation-delay: -660ms;
+}
+
+@-webkit-keyframes tracer {
+  0% {
+    stroke-dasharray: 0, 260;
+    stroke-dashoffset: -234;
+  }
+
+  25% {
+    transform: translate(-2px, 2px);
+  }
+
+  50% {
+    stroke-dasharray: 43.3333333333, 260;
+    stroke-dashoffset: -78;
+  }
+
+  65% {
+    transform: translateX(2px, -2px);
+  }
+
+  100% {
+    stroke-dasharray: 4, 260;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes tracer {
+  0% {
+    stroke-dasharray: 0, 260;
+    stroke-dashoffset: -234;
+  }
+
+  25% {
+    transform: translate(-2px, 2px);
+  }
+
+  50% {
+    stroke-dasharray: 43.3333333333, 260;
+    stroke-dashoffset: -78;
+  }
+
+  65% {
+    transform: translateX(2px, -2px);
+  }
+
+  100% {
+    stroke-dasharray: 4, 260;
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes hover {
+  50% {
+    transform: translateY(2px) scale(1.02);
+  }
+}
+
+@keyframes hover {
+  50% {
+    transform: translateY(2px) scale(1.02);
+  }
+}
+
+.first-background {
+  position: fixed;
+  background-image: url("/static/img/bgd1.jpg");
+  background-size: cover;
+  height: 94.2vh;
+}
+
+.cosomo-background {
+  position: fixed;
+  background-image: url("/static/img/open_background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 94.2vh;
+}
+
+section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section img {
+  position: absolute;
+  width: 8vw;
+  height: auto;
+}
+
+section .comet {
+  top: 5%;
+  left: 5%;
+}
+
+section .oneP {
+  width: 8vw;
+  top: 15%;
+  left: 40%;
+}
+
+section .twoP {
+  width: 15vw;
+  top: 65%;
+  left: 40%;
+}
+
+section .threeP {
+  width: 5vw;
+  bottom: 5%;
+  right: 30%;
+}
+
+section .fourP {
+  width: 9vw;
+  left: 20%;
+  bottom: 0%;
+}
+
+section .fiveP {
+  width: 7vw;
+  top: 7%;
+  left: 50%;
+}
+
+section .sixP {
+  width: 9vw;
+  right: 13%;
+  bottom: 10%;
+}
+
+section .sevenP {
+  width: 2.5vw;
+  left: 5%;
+  bottom: 7%;
+}
+
+section .eightP {
+  width: 10vw;
+  top: 40%;
+  left: 3%;
+}
+
+section .nineP {
+  width: 10vw;
+  top: 30%;
+  right: 30%;
+}
+
+section .tenP {
+  width: 7vw;
+  right: 10%;
+  bottom: 20%;
+}
+
+section .sun {
+  width: 12vw;
+  top: 15%;
+  right: 10%;
+}
+
+/* header */
+.head-nav-text {
+  font-weight: bold;
+}
+
+.food-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 네온 */
+.open {
+  position: fixed;
+  text-align: center;
+  font-size: 3em;
+  margin: 20px 0 20px 0;
+  font-family: "Monoton", cursive;
+  position: relative;
+  top: 400px;
+}
+
+.open a {
+  text-decoration: none;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.open a {
+  color: #fff;
+  font-family: Monoton;
+  -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+  animation: neon1 1.5s ease-in-out infinite alternate;
+}
+
+.open a:hover {
+  color: #ff1177;
+  -webkit-animation: none;
+  -moz-animation: none;
+  animation: none;
+}
+
+/*glow for webkit*/
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff1177,
+      0 0 70px #ff1177, 0 0 80px #ff1177, 0 0 100px #ff1177, 0 0 150px #ff1177;
+  }
+
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff1177,
+      0 0 35px #ff1177, 0 0 40px #ff1177, 0 0 50px #ff1177, 0 0 75px #ff1177;
+  }
+}
+
+/*glow for mozilla*/
+
+@-moz-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff1177,
+      0 0 70px #ff1177, 0 0 80px #ff1177, 0 0 100px #ff1177, 0 0 150px #ff1177;
+  }
+
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff1177,
+      0 0 35px #ff1177, 0 0 40px #ff1177, 0 0 50px #ff1177, 0 0 75px #ff1177;
+  }
+}
+
+/* 냉장고 img 크기조절 */
+.refrigerator {
+  height: 900px;
+  width: 650px;
+}
+
+.refrigerator2 {
+  height: 900px;
+  width: 1200px;
+}

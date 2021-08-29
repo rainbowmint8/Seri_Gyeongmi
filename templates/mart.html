@@ -1,0 +1,166 @@
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <script>
+    alert("{{messages[-1]}}")
+  </script>
+  {% endif %}
+{% endwith %}
+
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/static/img/refrigerator.ico" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+  <title>마트 위치</title>
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Jq -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <!-- font awesomes CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- css -->
+  <link rel="stylesheet" href="/static/css/common.css">
+  <link rel="stylesheet" href="/static/css/mart.css">
+  <link rel="stylesheet" href="/static/css/mart_map.css">
+
+  <!-- kakao js sdk -->
+  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+</head>
+
+<body>
+  <!-- 회원가입 모달 -->
+  <div name="form" class="modal fade newmem" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <form class="modal-dialog" method="POST" action="/registers">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="newmember">회원가입</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- 닉네임 -->
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="username" id="nameinput" placeholder="name">
+            <label for="nameinput">NAME</label>
+          </div>
+
+          <!-- 아이디 -->
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="id" id="id1" placeholder="id">
+            <label for="id1">ID</label>
+          </div>
+
+          <!-- 비밀번호 -->
+          <div class="form-floating">
+            <input type="password" class="form-control" name="pwd" id="pw1" placeholder="Password">
+            <label for="pw1">PASSWORD</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-outline-light" value="NEW MEMBER !">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- 로그인 모달 -->
+  <div class="modal fade login" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" method="POST" action="/login">
+        <div class="modal-header">
+          <h5 class="modal-title" id="login">로그인</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- 아이디 -->
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="id" id="id2" placeholder="id">
+            <label for="id2">ID</label>
+          </div>
+
+          <!-- 비밀번호 -->
+          <div class="form-floating">
+            <input type="password" class="form-control" name="pwd" id="pw2" placeholder="Password">
+            <label for="pw2">PASSWORD</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-outline-light" value="LOGIN !">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 메뉴바 -->
+  <header class="navbar navbar-expand-lg navbar-light bg-light menu-bar">
+    <div class="container-fluid">
+      <a class="navbar-brand head-nav-text" href="/join_index">냉장고 파먹기</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/ingredient">마이냉장고</a>
+          <a class="nav-link" href="/mart">마트위치</a>
+          <a class="nav-link" href="/" onclick="alert('나중에 또 봐요! 회원님! *^^*')">로그아웃</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 마트 검색 -->
+  <section class="search-bar">
+    <div class="search-text">마트 찾기 🚗</div>
+    <!-- 검색창 -->
+    <div class="search">
+      <form onsubmit="searchPlaces(); return false;">
+        <input type="text" value="서울역 마트" id="keyword" class="search-text-bar" placeholder="마트 이름 또는 위치를 입력해주세요! *^^*">
+        <input type="submit" class="btn-submit" value="검색 🔎">
+      </form>
+    </div>
+  </section>
+
+  <!-- 마트정보 : 지도 -->
+  <div class="map_wrap">
+    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+
+    <div id="menu_wrap" class="bg_white">
+      <hr>
+      <ul id="placesList"></ul>
+      <div id="pagination"></div>
+    </div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script>
+
+    <!-- kakao appkey -->
+    <script type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a2b5c3143fe3e75f90b20bfdb3ed7e4c&libraries=services"></script>
+
+    <!-- js : kakao map api -->
+    <script src="/static/js/mart.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+/* 마트 검색 */
+.search-bar {
+  height: 200px;
+  width: auto;
+}
+
+.search-text {
+  font-family: "Jua", sans-serif;
+  font-size: 35px;
+  text-align: center;
+  padding: 20px;
+  height: 20px;
+}
+
+.search-text-bar {
+  font-family: "Jua", sans-serif;
+  width: 80%;
+  padding: 15px;
+  margin: 40px;
+  border-radius: 25px;
+  outline: none;
+}
+
+.btn-submit {
+  font-family: "Jua", sans-serif;
+  padding: 15px;
+  border-radius: 25px;
+}
