@@ -127,9 +127,9 @@
   <section class="food-add">
     <div class="food-add-wrap">
       <div class="food-add-title">마이냉장고에 재료를 추가해주세요!</div>
-      <form class="food-add-btn" method="POST" action="/newItem">
+      <form class="food-add-btn" method="POST" action="/newItem" onsubmit="return false">
         <input type="text" name="food_name" class="food-add-bar" id="foodName" placeholder="재료 이름" />
-        <button type="button" class="btn btn-outline-secondary add-btn" onclick="addButton()">
+        <button type="submit" class="btn btn-outline-secondary add-btn" onclick="addButton()">
           재료 추가
         </button>
       </form>

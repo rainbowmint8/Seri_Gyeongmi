@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, jsonify, flash
 from pymongo import MongoClient
 
-client = MongoClient('mongodb://test:test@13.125.103.163', 27017)
+# client = MongoClient('mongodb://test:test@13.125.103.163', 27017)
+client = MongoClient('localhost', 27017)
 db = client.piracheminMartDB  # 'piracheminMartDB' db 생성
 
 app = Flask(__name__)
@@ -11,6 +12,7 @@ app.secret_key = '피라체민_프로젝트_냉장고파먹기_8조'
 
 
 # 로그인 전 index
+
 @app.route('/')
 def home1():
     return render_template('index.html')
