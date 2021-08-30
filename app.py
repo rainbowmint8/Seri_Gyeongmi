@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify, flash
 from pymongo import MongoClient
 
-client = MongoClient('localhost', 27017)
+client = MongoClient('mongodb://test:test@13.125.103.163', 27017)
 db = client.piracheminMartDB  # 'piracheminMartDB' db 생성
 
 app = Flask(__name__)
@@ -100,13 +100,13 @@ def add_item():
             flash('찾는 재료가 없어요! ㅠ_ㅠ')
             return render_template('ingredient.html')
         elif target is not None:
-            food_find = db.userItem.delete_one({'음식명' : target})
+            food_find = db.userItem.delete_one({'음식명': target})
             return render_template('ingredient.html')
     elif request.method == 'GET':
         food_find_list = list(db.userItem.find({}, {'_id': False}))
         print("food_find_list is", food_find_list)
         return jsonify({'all_food': food_find_list})
-    
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
