@@ -18,7 +18,7 @@
 
 ---
 
-## 담딩
+## 담당
 김경미|강세리|
 ---|---|
 front-end, back-end|front-end,illustrator
